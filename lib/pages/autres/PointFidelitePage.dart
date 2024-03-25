@@ -12,6 +12,8 @@ class PointFidelitePage extends StatefulWidget {
 class _PointFidelitePageState extends State<PointFidelitePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+
+    );
   }
 }

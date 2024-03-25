@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zigida_app/pages/autres/CarouselPage.dart';
+import 'package:zigida_app/pages/details/DetailPage.dart';
 import 'package:zigida_app/pages/notification/NotificationPage.dart';
 import 'package:zigida_app/utils/ColorPages.dart';
 import 'package:zigida_app/utils/Routes.dart';
@@ -54,7 +55,7 @@ class _HomePageState extends State<HomePage> {
               icon: Badge(
                   label: Text("6"),
                   child:
-                  Icon(Icons.notifications, color: ColorPages.COLOR_BLANC)),
+                      Icon(Icons.notifications, color: ColorPages.COLOR_BLANC)),
             ),
           ],
         ),
@@ -70,238 +71,313 @@ class _HomePageState extends State<HomePage> {
         ),
         body: SingleChildScrollView(
           child: Column(
-              children: [
-                CarouselPage(),
-                SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(14.0),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 18.0),
-                        child: Container(
-                            alignment: Alignment.centerLeft,
-                            child: new Text(
-                              'Nos produits recents',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            )),
-                      ),
-                    ),
-                  ],
-                ),
-                  Column(
             children: [
-              Container(
-                child: Row(
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                            height:150,
-                            width:200,
-                            child: Image.asset("images/image1.jpg",width: 200)),
-                        Container(
-                          width: 160,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: ColorPages.COLOR_ROUGE,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  )),
-                              onPressed: (){}, child: Text('Appel',style: TextStyle(color: ColorPages.COLOR_BLANC),)),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text("Tomate Fresh",style: TextStyle(fontSize: 21),),
-                        Text("20.000Fc"),
-                        Container(
-                          width: 160,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: ColorPages.COLOR_VERT,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  )),
-                              onPressed: (){}, child: Text('Whatsapp',style: TextStyle(color: ColorPages.COLOR_BLANC),)),
-                        )
-                      ],
-                    )
-                  ],
-                ),
+              CarouselPage(),
+              SizedBox(
+                height: 20,
               ),
-              Container(
-                child: Row(
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                            height:150,
-                            width:180,
-                            child: Image.asset("images/image4.jpg",width: 200)),
-                        Container(
-                          width: 160,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: ColorPages.COLOR_ROUGE,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  )),
-                              onPressed: (){}, child: Text('Appel',style: TextStyle(color: ColorPages.COLOR_BLANC),)),
-                        )
-                      ],
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(14.0),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 18.0),
+                      child: Container(
+                          alignment: Alignment.centerLeft,
+                          child: new Text(
+                            'Nos produits recents',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          )),
                     ),
-                    Column(
-                      children: [
-                        Text("Semoule",style: TextStyle(fontSize: 21),),
-                        Text("20.000Fc"),
-                        Container(
-                          width: 160,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: ColorPages.COLOR_VERT,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  )),
-                              onPressed: (){}, child: Text('Whatsapp',style: TextStyle(color: ColorPages.COLOR_BLANC),)),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                child: Row(
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                            height:150,
-                            width:200,
-                            child: Image.asset("images/image3.jpg",width: 200)),
-                        Container(
-                          width: 160,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: ColorPages.COLOR_ROUGE,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  )),
-                              onPressed: (){}, child: Text('Appel',style: TextStyle(color: ColorPages.COLOR_BLANC),)),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text("Aubergine",style: TextStyle(fontSize: 21),),
-                        Text("14.000Fc"),
-                        Container(
-                          width: 160,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: ColorPages.COLOR_VERT,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  )),
-                              onPressed: (){}, child: Text('Whatsapp',style: TextStyle(color: ColorPages.COLOR_BLANC),)),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                child: Row(
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                          height:150,
-                            width:200,
-                            child: Image.asset("images/image4.jpg",)),
-                        Container(
-                          width: 160,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: ColorPages.COLOR_ROUGE,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  )),
-                              onPressed: (){}, child: Text('Appel',style: TextStyle(color: ColorPages.COLOR_BLANC),)),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text("Semoule",style: TextStyle(fontSize: 21),),
-                        Text("45.000Fc"),
-                        Container(
-                          width: 160,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: ColorPages.COLOR_VERT,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  )),
-                              onPressed: (){}, child: Text('Whatsapp',style: TextStyle(color: ColorPages.COLOR_BLANC),)),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                child: Row(
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                            height:150,
-                            width:180,
-                            child: Image.asset("images/image1.jpg",width: 200)),
-                        Container(
-                          width: 160,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: ColorPages.COLOR_ROUGE,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  )),
-                              onPressed: (){}, child: Text('Appel',style: TextStyle(color: ColorPages.COLOR_BLANC),)),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text("Tomate Fresh",style: TextStyle(fontSize: 21),),
-                        Text("20.000Fc"),
-                        Container(
-                          width: 160,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: ColorPages.COLOR_VERT,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  )),
-                              onPressed: (){}, child: Text('Whatsapp',style: TextStyle(color: ColorPages.COLOR_BLANC),)),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              )
-            ],
                   ),
-                
-              ],
-            
+                ],
+              ),
+              Column(
+                children: [
+                  Container(
+                    child: Row(
+                      children: [
+                        Column(
+                          children: [
+                            Container(
+                                height: 150,
+                                width: 200,
+                                child: Image.asset("images/image1.jpg",
+                                    width: 200)),
+                            Container(
+                              width: 160,
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: ColorPages.COLOR_ROUGE,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      )),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                DetailPage()));
+                                  },
+                                  child: Text(
+                                    'Appel',
+                                    style: TextStyle(
+                                        color: ColorPages.COLOR_BLANC),
+                                  )),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              "Tomate Fresh",
+                              style: TextStyle(fontSize: 21),
+                            ),
+                            Text("20.000Fc"),
+                            Container(
+                              width: 160,
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: ColorPages.COLOR_VERT,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      )),
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Whatsapp',
+                                    style: TextStyle(
+                                        color: ColorPages.COLOR_BLANC),
+                                  )),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                      children: [
+                        Column(
+                          children: [
+                            Container(
+                                height: 150,
+                                width: 180,
+                                child: Image.asset("images/image4.jpg",
+                                    width: 200)),
+                            Container(
+                              width: 160,
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: ColorPages.COLOR_ROUGE,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      )),
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Appel',
+                                    style: TextStyle(
+                                        color: ColorPages.COLOR_BLANC),
+                                  )),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              "Semoule",
+                              style: TextStyle(fontSize: 21),
+                            ),
+                            Text("20.000Fc"),
+                            Container(
+                              width: 160,
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: ColorPages.COLOR_VERT,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      )),
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Whatsapp',
+                                    style: TextStyle(
+                                        color: ColorPages.COLOR_BLANC),
+                                  )),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                      children: [
+                        Column(
+                          children: [
+                            Container(
+                                height: 150,
+                                width: 200,
+                                child: Image.asset("images/image3.jpg",
+                                    width: 200)),
+                            Container(
+                              width: 160,
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: ColorPages.COLOR_ROUGE,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      )),
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Appel',
+                                    style: TextStyle(
+                                        color: ColorPages.COLOR_BLANC),
+                                  )),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              "Aubergine",
+                              style: TextStyle(fontSize: 21),
+                            ),
+                            Text("14.000Fc"),
+                            Container(
+                              width: 160,
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: ColorPages.COLOR_VERT,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      )),
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Whatsapp',
+                                    style: TextStyle(
+                                        color: ColorPages.COLOR_BLANC),
+                                  )),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                      children: [
+                        Column(
+                          children: [
+                            Container(
+                                height: 150,
+                                width: 200,
+                                child: Image.asset(
+                                  "images/image4.jpg",
+                                )),
+                            Container(
+                              width: 160,
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: ColorPages.COLOR_ROUGE,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      )),
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Appel',
+                                    style: TextStyle(
+                                        color: ColorPages.COLOR_BLANC),
+                                  )),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              "Semoule",
+                              style: TextStyle(fontSize: 21),
+                            ),
+                            Text("45.000Fc"),
+                            Container(
+                              width: 160,
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: ColorPages.COLOR_VERT,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      )),
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Whatsapp',
+                                    style: TextStyle(
+                                        color: ColorPages.COLOR_BLANC),
+                                  )),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                      children: [
+                        Column(
+                          children: [
+                            Container(
+                                height: 150,
+                                width: 180,
+                                child: Image.asset("images/image1.jpg",
+                                    width: 200)),
+                            Container(
+                              width: 160,
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: ColorPages.COLOR_ROUGE,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      )),
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Appel',
+                                    style: TextStyle(
+                                        color: ColorPages.COLOR_BLANC),
+                                  )),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              "Tomate Fresh",
+                              style: TextStyle(fontSize: 21),
+                            ),
+                            Text("20.000Fc"),
+                            Container(
+                              width: 160,
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: ColorPages.COLOR_VERT,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      )),
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Whatsapp',
+                                    style: TextStyle(
+                                        color: ColorPages.COLOR_BLANC),
+                                  )),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ],
           ),
         )
-      //bottomNavigationBar: BottomNavBarWidget(),
-    );
+        //bottomNavigationBar: BottomNavBarWidget(),
+        );
   }
 }

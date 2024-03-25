@@ -16,7 +16,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
-        height: 110,
+        height: 55,
         color: ColorPages.COLOR_BLANC,
         child: Padding(
           padding: const EdgeInsets.all(18.0),

@@ -13,7 +13,7 @@ class _EntetePageState extends State<EntetePage> {
   Widget build(BuildContext context) {
     return Container(
       color: ColorPages.COLOR_VERT,
-      width: double.infinity,
+      width:  double.infinity,
       height: 150,
       padding: EdgeInsets.only(top: 20.0),
       child: Column(
@@ -22,7 +22,7 @@ class _EntetePageState extends State<EntetePage> {
           Container(
             margin: EdgeInsets.only(bottom: 15),
             height: 70,
-            child: Image.asset("images/logo1.PNG"),
+            child: Image.asset("images/logo3.png"),
           ),
         ],
       ),

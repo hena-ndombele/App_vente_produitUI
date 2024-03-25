@@ -11,6 +11,8 @@ class CategoriePage extends StatefulWidget {
 class _CategoriePageState extends State<CategoriePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+
+    );
   }
 }

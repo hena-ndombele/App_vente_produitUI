@@ -12,10 +12,10 @@ class _CarouselPageState extends State<CarouselPage> {
   int _currentIndex = 0;
 
   final List<String> _imageList = [
-    'images/image11.jpg',
-    'images/image9.jpg',
+    'images/image19.jpg',
+    'images/image18.jpg',
     'images/image5.jpg',
-    'images/image10.jpg',
+    'images/image15.jpg',
   ];
 
   @override
@@ -42,7 +42,6 @@ class _CarouselPageState extends State<CarouselPage> {
           }).toList(),
           options: CarouselOptions(
             height: 200,
-
             enlargeCenterPage: true,
             autoPlay: true,
             autoPlayInterval: Duration(seconds: 3),
