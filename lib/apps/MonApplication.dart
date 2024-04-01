@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zigida_app/pages/demarrage/HomePage.dart';
 import 'package:zigida_app/pages/demarrage/SplashPage.dart';
 import 'package:zigida_app/utils/ColorPages.dart';
-import 'package:zigida_app/widgets/BottomNavBarWidget.dart';
-
-import '../pages/contact/ContactPage.dart';
 
 class MonApplication extends StatelessWidget {
   const MonApplication({super.key});

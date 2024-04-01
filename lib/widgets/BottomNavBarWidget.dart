@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zigida_app/utils/ColorPages.dart';
 
-import '../pages/notification/NotificationPage.dart';
 
 
 class BottomNavBarWidget extends StatefulWidget {

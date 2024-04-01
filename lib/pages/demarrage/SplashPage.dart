@@ -3,7 +3,6 @@ import 'package:zigida_app/pages/demarrage/HomePage.dart';
 
 import '../../utils/ColorPages.dart';
 
-
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
 
@@ -13,19 +12,19 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   @override
-   void initState() {
-     super.initState();
-     _initializeData();
+  void initState() {
+    super.initState();
+    _initializeData();
   }
 
   void _initializeData() {
     Future.delayed(Duration(seconds: 4)).then((_) {
       Navigator.push(
-          context,
+        context,
         MaterialPageRoute(builder: (context) => HomePage()),
       );
     });
-   }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +41,31 @@ class _SplashPageState extends State<SplashPage> {
                 "images/logo1.png",
                 width: 500,
                 height: 250,
+              ),
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 95),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Spacer(),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text('Rapidité-Qualité-Quantité',
+                                style: TextStyle(
+                                    color: ColorPages.COLOR_BLANC,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14)),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      )
+                    ],
+                  ),
+                ),
               ),
             ],
           ),

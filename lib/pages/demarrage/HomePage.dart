@@ -1,94 +1,181 @@
 import 'package:flutter/material.dart';
-import 'package:zigida_app/pages/autres/CarouselPage.dart';
-import 'package:zigida_app/pages/details/DetailPage.dart';
-import 'package:zigida_app/pages/notification/NotificationPage.dart';
-import 'package:zigida_app/utils/ColorPages.dart';
-import 'package:zigida_app/utils/Routes.dart';
 import 'package:zigida_app/widgets/BottomNavBarWidget.dart';
-
-import '../drawer/EntetePage.dart';
-import '../drawer/ListePage.dart';
+import '../../utils/ColorPages.dart';
+import '../autres/CarouselPage.dart';
+import '../controllers/ProduitController.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
-          backgroundColor: ColorPages.COLOR_VERT,
-          automaticallyImplyLeading: false,
-          // Désactiver l'affichage automatique de l'icône du menu
-          title: Row(
-            children: [
-              IconButton(
-                onPressed: () {
-                  _scaffoldKey.currentState?.openDrawer();
-                },
-                // Ajoutez le code de votre action pour l'icône du menu
-                icon: Icon(Icons.menu, color: ColorPages.COLOR_BLANC),
-              ),
-              Image.asset(
-                'images/logo3.PNG',
-                width: 60,
-              ),
-              // Remplacez 'images/logo3.PNG' par le chemin de votre image
-            ],
-          ),
-          actions: [
+      appBar: AppBar(
+        backgroundColor: ColorPages.COLOR_VERT,
+        automaticallyImplyLeading: false,
+        title: Row(
+          children: [
             IconButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => NotificationPage()));
-                //Navigator.pushNamed(context, Routes.NotificationPage);
-              }, // Ajoutez le code de votre action pour l'icône de notification
-              icon: Badge(
-                  label: Text("6"),
-                  child:
-                      Icon(Icons.notifications, color: ColorPages.COLOR_BLANC)),
+              onPressed: () {},
+              icon: Icon(Icons.menu, color: ColorPages.COLOR_BLANC),
+            ),
+            Image.asset(
+              'images/logo3.PNG',
+              width: 60,
             ),
           ],
         ),
-        drawerEdgeDragWidth: 50,
-        drawer: Drawer(
-          child: Container(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [EntetePage(), ListePage()],
-              ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Badge(
+              label: Text("6"),
+              child: Icon(Icons.shopping_basket, color: ColorPages.COLOR_BLANC),
             ),
           ),
-        ),
-        body: SingleChildScrollView(
+        ],
+      ),
+      drawerEdgeDragWidth: 50,
+      drawer: Drawer(),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15),
           child: Column(
             children: [
               CarouselPage(),
-              SizedBox(
-                height: 20,
+              //nos marques
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    child: Text(
+                      "Rejoignez ces Marques.",
+                      style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
+                    ),
+                  ),
+                ],
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    Image.asset("images/logo1.png", width: 100, height: 100),
+                    Image.asset("images/logo1.png", width: 100, height: 100),
+                    Image.asset("images/logo1.png", width: 100, height: 100),
+                    Image.asset("images/logo1.png", width: 100, height: 100),
+                  ],
+                ),
+              ),
+              //produit local
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    child: Text(
+                      "Produits locaux.",
+                      style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                height: 280,
+                width: double.infinity,
+                child: ListView.builder(
+                  itemCount: 5,
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) =>
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              offset: const Offset(0, 6),
+                              color: Colors.black.withOpacity(0.1),
+                              blurRadius: 8,
+                              spreadRadius: 2,
+                            ),
+                          ],
+                        ),
+                        margin: EdgeInsets.all(12),
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width * 0.5,
+                        child: Column(
+                          children: [
+                            Expanded(
+                                child: Container(
+                                  width: double.infinity,
+                                  child: Image.asset("images/image1.jpg"),
+                                )),
+                            Container(
+                              padding: EdgeInsets.symmetric(horizontal: 14),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Tomate Fresh",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.red),
+                                  ),
+                                  Text("1KG",
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold)),
+                                  Row(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("6000 FC",
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold)),
+                                      IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(
+                                            Icons.add_circle,
+                                            color: ColorPages.COLOR_VERT,
+                                            size: 35,
+                                          ))
+                                    ],
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                ),
               ),
               Row(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(14.0),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 18.0),
-                      child: Container(
-                          alignment: Alignment.centerLeft,
-                          child: new Text(
-                            'Nos produits recents',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          )),
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    child: Text(
+                      "Nos produits.",
+                      style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
+                    ),
+                  ),
+                  Container(
+                    child: Text(
+                      "Tout voir.",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: Colors.red),
                     ),
                   ),
                 ],
@@ -96,288 +183,333 @@ class _HomePageState extends State<HomePage> {
               Column(
                 children: [
                   Container(
-                    child: Row(
-                      children: [
-                        Column(
-                          children: [
-                            Container(
-                                height: 150,
-                                width: 200,
-                                child: Image.asset("images/image1.jpg",
-                                    width: 200)),
-                            Container(
-                              width: 160,
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: ColorPages.COLOR_ROUGE,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                      )),
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                DetailPage()));
-                                  },
-                                  child: Text(
-                                    'Appel',
-                                    style: TextStyle(
-                                        color: ColorPages.COLOR_BLANC),
-                                  )),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "Tomate Fresh",
-                              style: TextStyle(fontSize: 21),
+                    height: 280,
+                    width: double.infinity,
+                    child: ListView.builder(
+                      itemCount: 2,
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) =>
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  offset: const Offset(0, 6),
+                                  color: Colors.black.withOpacity(0.1),
+                                  blurRadius: 8,
+                                  spreadRadius: 2,
+                                ),
+                              ],
                             ),
-                            Text("20.000Fc"),
-                            Container(
-                              width: 160,
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: ColorPages.COLOR_VERT,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                      )),
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Whatsapp',
-                                    style: TextStyle(
-                                        color: ColorPages.COLOR_BLANC),
-                                  )),
-                            )
-                          ],
-                        )
-                      ],
+                            margin: EdgeInsets.all(12),
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width * 0.5,
+                            child: Column(
+                              children: [
+                                Expanded(
+                                    child: Container(
+                                      width: double.infinity,
+                                      child: Image.asset("images/image1.jpg"),
+                                    )),
+                                Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 14),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment
+                                        .start,
+                                    children: [
+                                      Text(
+                                        "Tomate Fresh",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.red),
+                                      ),
+                                      Text("1KG",
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold)),
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text("6000 FC",
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold)),
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(
+                                                Icons.add_circle,
+                                                color: ColorPages.COLOR_VERT,
+                                                size: 35,
+                                              ))
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
                     ),
                   ),
                   Container(
-                    child: Row(
-                      children: [
-                        Column(
-                          children: [
-                            Container(
-                                height: 150,
-                                width: 180,
-                                child: Image.asset("images/image4.jpg",
-                                    width: 200)),
-                            Container(
-                              width: 160,
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: ColorPages.COLOR_ROUGE,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                      )),
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Appel',
-                                    style: TextStyle(
-                                        color: ColorPages.COLOR_BLANC),
-                                  )),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "Semoule",
-                              style: TextStyle(fontSize: 21),
+                    height: 280,
+                    width: double.infinity,
+                    child: ListView.builder(
+                      itemCount: 2,
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) =>
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  offset: const Offset(0, 6),
+                                  color: Colors.black.withOpacity(0.1),
+                                  blurRadius: 8,
+                                  spreadRadius: 2,
+                                ),
+                              ],
                             ),
-                            Text("20.000Fc"),
-                            Container(
-                              width: 160,
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: ColorPages.COLOR_VERT,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                      )),
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Whatsapp',
-                                    style: TextStyle(
-                                        color: ColorPages.COLOR_BLANC),
-                                  )),
-                            )
-                          ],
-                        )
-                      ],
+                            margin: EdgeInsets.all(12),
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width * 0.5,
+                            child: Column(
+                              children: [
+                                Expanded(
+                                    child: Container(
+                                      width: double.infinity,
+                                      child: Image.asset("images/image1.jpg"),
+                                    )),
+                                Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 14),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment
+                                        .start,
+                                    children: [
+                                      Text(
+                                        "Tomate Fresh",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.red),
+                                      ),
+                                      Text("1KG",
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold)),
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text("6000 FC",
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold)),
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(
+                                                Icons.add_circle,
+                                                color: ColorPages.COLOR_VERT,
+                                                size: 35,
+                                              ))
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
                     ),
                   ),
                   Container(
-                    child: Row(
-                      children: [
-                        Column(
-                          children: [
-                            Container(
-                                height: 150,
-                                width: 200,
-                                child: Image.asset("images/image3.jpg",
-                                    width: 200)),
-                            Container(
-                              width: 160,
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: ColorPages.COLOR_ROUGE,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                      )),
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Appel',
-                                    style: TextStyle(
-                                        color: ColorPages.COLOR_BLANC),
-                                  )),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "Aubergine",
-                              style: TextStyle(fontSize: 21),
+                    height: 280,
+                    width: double.infinity,
+                    child: ListView.builder(
+                      itemCount: 2,
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) =>
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  offset: const Offset(0, 6),
+                                  color: Colors.black.withOpacity(0.1),
+                                  blurRadius: 8,
+                                  spreadRadius: 2,
+                                ),
+                              ],
                             ),
-                            Text("14.000Fc"),
-                            Container(
-                              width: 160,
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: ColorPages.COLOR_VERT,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                      )),
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Whatsapp',
-                                    style: TextStyle(
-                                        color: ColorPages.COLOR_BLANC),
-                                  )),
-                            )
-                          ],
-                        )
-                      ],
+                            margin: EdgeInsets.all(12),
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width * 0.5,
+                            child: Column(
+                              children: [
+                                Expanded(
+                                    child: Container(
+                                      width: double.infinity,
+                                      child: Image.asset("images/image1.jpg"),
+                                    )),
+                                Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 14),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment
+                                        .start,
+                                    children: [
+                                      Text(
+                                        "Tomate Fresh",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.red),
+                                      ),
+                                      Text("1KG",
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold)),
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text("6000 FC",
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold)),
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(
+                                                Icons.add_circle,
+                                                color: ColorPages.COLOR_VERT,
+                                                size: 35,
+                                              ))
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
                     ),
                   ),
                   Container(
-                    child: Row(
-                      children: [
-                        Column(
-                          children: [
-                            Container(
-                                height: 150,
-                                width: 200,
-                                child: Image.asset(
-                                  "images/image4.jpg",
-                                )),
-                            Container(
-                              width: 160,
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: ColorPages.COLOR_ROUGE,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                      )),
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Appel',
-                                    style: TextStyle(
-                                        color: ColorPages.COLOR_BLANC),
-                                  )),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "Semoule",
-                              style: TextStyle(fontSize: 21),
+                    height: 280,
+                    width: double.infinity,
+                    child: ListView.builder(
+                      itemCount: 2,
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) =>
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  offset: const Offset(0, 6),
+                                  color: Colors.black.withOpacity(0.1),
+                                  blurRadius: 8,
+                                  spreadRadius: 2,
+                                ),
+                              ],
                             ),
-                            Text("45.000Fc"),
-                            Container(
-                              width: 160,
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: ColorPages.COLOR_VERT,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                      )),
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Whatsapp',
-                                    style: TextStyle(
-                                        color: ColorPages.COLOR_BLANC),
-                                  )),
-                            )
-                          ],
-                        )
-                      ],
+                            margin: EdgeInsets.all(12),
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width * 0.5,
+                            child: Column(
+                              children: [
+                                Expanded(
+                                    child: Container(
+                                      width: double.infinity,
+                                      child: Image.asset("images/image1.jpg"),
+                                    )),
+                                Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 14),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment
+                                        .start,
+                                    children: [
+                                      Text(
+                                        "Tomate Fresh",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.red),
+                                      ),
+                                      Text("1KG",
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold)),
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text("6000 FC",
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold)),
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(
+                                                Icons.add_circle,
+                                                color: ColorPages.COLOR_VERT,
+                                                size: 35,
+                                              ))
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
                     ),
                   ),
-                  Container(
-                    child: Row(
-                      children: [
-                        Column(
-                          children: [
-                            Container(
-                                height: 150,
-                                width: 180,
-                                child: Image.asset("images/image1.jpg",
-                                    width: 200)),
-                            Container(
-                              width: 160,
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: ColorPages.COLOR_ROUGE,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                      )),
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Appel',
-                                    style: TextStyle(
-                                        color: ColorPages.COLOR_BLANC),
-                                  )),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "Tomate Fresh",
-                              style: TextStyle(fontSize: 21),
-                            ),
-                            Text("20.000Fc"),
-                            Container(
-                              width: 160,
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: ColorPages.COLOR_VERT,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                      )),
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Whatsapp',
-                                    style: TextStyle(
-                                        color: ColorPages.COLOR_BLANC),
-                                  )),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  )
                 ],
               ),
             ],
           ),
-        )
-        //bottomNavigationBar: BottomNavBarWidget(),
-        );
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: ColorPages.COLOR_VERT,
+        unselectedItemColor: ColorPages.COLOR_ROUGE,
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_basket_rounded),
+              label: "Zigida",
+              activeIcon: Icon(Icons.shopping_basket_rounded)),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: "Catégories",
+              activeIcon: Icon(Icons.home)),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: "Recherche",
+              activeIcon: Icon(Icons.search)),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: "Contact",
+              activeIcon: Icon(Icons.home)),
+        ],
+      ),
+    );
   }
 }

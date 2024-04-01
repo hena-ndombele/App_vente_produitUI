@@ -35,7 +35,7 @@ class _CarouselPageState extends State<CarouselPage> {
                 child: Image.asset(
                   imagePath,
                   fit: BoxFit.cover,
-                  width: 300,
+                  width: double.infinity,
                 ),
               ),
             );

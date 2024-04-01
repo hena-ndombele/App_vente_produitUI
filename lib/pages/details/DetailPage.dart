@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-
+import 'package:zigida_app/utils/ColorPages.dart';
 
 class DetailPage extends StatefulWidget {
   const DetailPage({super.key});
@@ -20,171 +19,198 @@ class _DetailPageState extends State<DetailPage> {
         elevation: 0,
         centerTitle: true,
         backgroundColor: Colors.transparent,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            // Ajoutez le code de votre action pour l'icône de notification
+            icon: Badge(
+                label: Text("6"),
+                child:
+                    Icon(Icons.shopping_basket, color: ColorPages.COLOR_NOIR)),
+          ),
+        ],
       ),
-
-
       body: SingleChildScrollView(
-        child: SafeArea(
-            child: Padding(padding: EdgeInsets.all(15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SafeArea(
+                child: Padding(
+              padding: EdgeInsets.all(15),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Center(
-                    child: Padding(padding: EdgeInsets.all(10),
-                    child: Container(
-                      height: MediaQuery.of(context).size.height / 3,
-                      width: MediaQuery.of(context).size.height,
-
-                        child: Image.asset("images/image7.jpg")),
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Container(
+                          height: MediaQuery.of(context).size.height / 3,
+                          width: MediaQuery.of(context).size.height,
+                          child: Image.asset("images/image1.jpg")),
                     ),
                   ),
-                  SizedBox(height: 10,),
-                  Container(
-                    height: 65,
-                    child: ListView.builder(
-                      itemCount: 3,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index){
-                        return GestureDetector(
-                          onTap: (){
-                            setState(() {
-
-                            });
-                          },
-
-                          child: Padding(
-                              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                            child: Container(
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.red,
-
-                                ),
-                                borderRadius: BorderRadius.circular(8)
-                              ),
-                              child: Image.asset("images/image7.jpg", width: 50,height: 150,fit: BoxFit.cover,),
-                            ),
-
-
-                          ),
-                        );
-                      },
-
-                    ),
+                  SizedBox(
+                    height: 10,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        height: 30,
-                      ),
-                      Text("Tomate Fresh", style: TextStyle(fontSize: 25,color: Colors.black87,fontWeight: FontWeight.bold,),),
-                      SizedBox(height: 5,),
-                      Text("FC 87000",style: TextStyle(color: Colors.redAccent,fontWeight: FontWeight.bold,fontSize: 25),),
-                      
+                      Container(
+                          padding: EdgeInsets.all(10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Tomate Fresh",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 21),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "6000 FC",
+                                    style: TextStyle(
+                                      fontSize: 19,
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(
+                                              Icons.do_not_disturb_on,
+                                              size: 30,
+                                            )),
+                                        Text(
+                                          '1',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.red),
+                                        ),
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(Icons.add_circle,
+                                                size: 30)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          )),
                     ],
                   ),
                   Column(
                     children: [
-                      Text("Tomate fresh",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black54),),
-                      SizedBox(height: 5,),
-                      Row(
-                        children: [
-                          Text("FC 120.000",style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black38,
-                            decoration: TextDecoration.lineThrough,
-                            decorationColor: Colors.red,
-                            decorationThickness: 2.0,
-                          ),),
-                          SizedBox(height: 5,),
-                          Text("-50%",style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black38
-
-                          ),)
-
-                        ],
+                      SizedBox(
+                        height: 20,
                       ),
-                      SizedBox(height: 20,),
                       Align(
                         alignment: Alignment.centerLeft,
-                        child: Text("Description: ",style: TextStyle(fontWeight: FontWeight.bold),),
+                        child: Text(
+                          "Détails: ",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
-                      SizedBox(height: 5,),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Align(
                         alignment: Alignment.centerLeft,
-                        child: Text("DescriptionDescription DescriptionDescription Description Description Description Description Description Description Description Description"
-                            "DescriptionDescriptionDescriptionDescription Description Description Description Description"),
+                        child: Text("1KG = 6000 FC"),
                       ),
-                      SizedBox(height: 10,),
-                      Padding(padding: EdgeInsets.all(10),
-
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-                        children: [
-                          Container(
-                            padding: EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black12,
-                                  blurRadius: 6,
-                                  spreadRadius: 2
-                                )
-                              ]
-                            ),
-                            child: Icon(Icons.email, size: 30, color: Color(0XFF146ABE),),
-                          ),
-
-                          Container(
-                            padding: EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.black12,
-                                      blurRadius: 6,
-                                      spreadRadius: 2
-                                  )
-                                ]
-                            ),
-                            child: Icon(Icons.phone, size: 30, color: Colors.green,),
-                          ),
-
-                          Container(
-                            padding: EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.black12,
-                                      blurRadius: 6,
-                                      spreadRadius: 2
-                                  )
-                                ]
-                            ),
-                            child: Icon(Icons.whatshot, size: 30, color: Colors.green,),
-                          ),
-                        ],
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text("1KG = 6000 FC"),
                       ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text("1KG = 6000 FC"),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text("1KG = 6000 FC"),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text("1KG = 6000 FC"),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text("1KG = 6000 FC"),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black12,
+                                        blurRadius: 6,
+                                        spreadRadius: 2)
+                                  ]),
+                              child: Icon(
+                                Icons.email,
+                                size: 30,
+                                color: Color(0XFF146ABE),
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black12,
+                                        blurRadius: 6,
+                                        spreadRadius: 2)
+                                  ]),
+                              child: Icon(
+                                Icons.phone,
+                                size: 30,
+                                color: Colors.green,
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black12,
+                                        blurRadius: 6,
+                                        spreadRadius: 2)
+                                  ]),
+                              child: Icon(
+                                Icons.whatshot,
+                                size: 30,
+                                color: Colors.green,
+                              ),
+                            ),
+                          ],
+                        ),
                       )
                     ],
                   )
                 ],
               ),
-            
-            )
-        
+            )),
+          ],
         ),
       ),
     );
