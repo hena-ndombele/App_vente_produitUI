@@ -1,32 +1,50 @@
-
-
-
-
 class ProduitModel {
-  int? pid;
-  String? imgUrl;
-  String? title;
-  String? prix;
-  String? description;
-  String? longDescription;
-  int? review;
-  double? rating;
+  final int pid;
+  final String imgUrl;
+  final String title;
+  final double price;
+  final String shortDescription;
+  final String longDescription;
+  final int review;
+  final double rating;
   bool isSelected;
   int qty;
-
   ProduitModel({
-    this.pid,
-    this.imgUrl,
-    this.title,
-    this.prix,
-    this.description,
-    this.longDescription,
-    this.review,
-    this.rating,
-    this.isSelected=false,
-    this.qty=1,
+    required this.pid,
+    required this.imgUrl,
+    required this.title,
+    required this.price,
+    required this.shortDescription,
+    required this.longDescription,
+    required this.review,
+    required this.rating,
+    this.isSelected = false,
+    this.qty = 1,
   });
 
-
+  ProduitModel copyWith({
+    int? pid,
+    String? imgUrl,
+    String? title,
+    double? price,
+    String? shortDescription,
+    String? longDescription,
+    int? review,
+    double? rating,
+    bool? isSelected,
+    int? qty,
+  }) {
+    return ProduitModel(
+      pid: pid ?? this.pid,
+      imgUrl: imgUrl ?? this.imgUrl,
+      title: title ?? this.title,
+      price: price ?? this.price,
+      shortDescription: shortDescription ?? this.shortDescription,
+      longDescription: longDescription ?? this.longDescription,
+      review: review ?? this.review,
+      rating: rating ?? this.rating,
+      isSelected: isSelected ?? this.isSelected,
+      qty: qty ?? this.qty,
+    );
+  }
 }
-

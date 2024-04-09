@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zigida_app/pages/demarrage/HomePage.dart';
+import 'package:zigida_app/widgets/BottomNavBarWidget.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../utils/ColorPages.dart';
 
@@ -21,7 +23,7 @@ class _SplashPageState extends State<SplashPage> {
     Future.delayed(Duration(seconds: 4)).then((_) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => HomePage()),
+        MaterialPageRoute(builder: (context) => BottomNavBarWidget()),
       );
     });
   }
@@ -44,15 +46,19 @@ class _SplashPageState extends State<SplashPage> {
               ),
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 95),
+                  margin: EdgeInsets.symmetric(horizontal: 100),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Spacer(),
                       Row(
                         children: [
+                         SpinKitSpinningLines(
+                            color: ColorPages.COLOR_BLANC,
+                            size: 40,
+                          ),
                           Expanded(
-                            child: Text('Rapidité-Qualité-Quantité',
+                            child: Text('WENZE NA TSHOMBO...',
                                 style: TextStyle(
                                     color: ColorPages.COLOR_BLANC,
                                     fontWeight: FontWeight.bold,

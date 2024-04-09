@@ -1,218 +1,109 @@
 import 'package:flutter/material.dart';
+import 'package:zigida_app/pages/demarrage/HomePage.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
+
 import 'package:zigida_app/utils/ColorPages.dart';
+import 'package:zigida_app/pages/controllers/ProduitController.dart';
 
-class DetailPage extends StatefulWidget {
-  const DetailPage({super.key});
+class DetailsPage extends ConsumerWidget {
+  DetailsPage({super.key, required this.getIndex});
+
+  int getIndex;
 
   @override
-  State<DetailPage> createState() => _DetailPageState();
-}
-
-class _DetailPageState extends State<DetailPage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentIndex = ref.watch(currentIndexProvider);
+    final product = ref.watch(proudctNotifierProvider);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tomate"),
-        leading: BackButton(),
-        foregroundColor: Colors.black,
-        elevation: 0,
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            // Ajoutez le code de votre action pour l'icône de notification
-            icon: Badge(
-                label: Text("6"),
-                child:
-                    Icon(Icons.shopping_basket, color: ColorPages.COLOR_NOIR)),
-          ),
-        ],
+        title: Text(product[getIndex].title, style: TextStyle(color: ColorPages.COLOR_ROUGE,fontWeight: FontWeight.bold),),
+
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SafeArea(
-                child: Padding(
-              padding: EdgeInsets.all(15),
+            Container(
+              height: 300,
+              width: double.infinity,
+
+              child: Image.asset(product[getIndex].imgUrl),
+            ),
+            Container(
+              padding: const EdgeInsets.all(30),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(
-                    child: Padding(
-                      padding: EdgeInsets.all(10),
-                      child: Container(
-                          height: MediaQuery.of(context).size.height / 3,
-                          width: MediaQuery.of(context).size.height,
-                          child: Image.asset("images/image1.jpg")),
-                    ),
+                  Text(
+                    product[getIndex].title,
+                    style: TextStyle(color: ColorPages.COLOR_VERT, fontWeight: FontWeight.bold, fontSize: 20)
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  const Gap(12),
+                  Row(
                     children: [
+                      Text('Livraison : ', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
+                      Text(
+                         'CDF 9000',
+                          style: TextStyle(color: ColorPages.COLOR_ROUGE, fontWeight: FontWeight.bold, fontSize: 17)
+                      ),
+                    ],
+                  ),
+                  const Gap(8),
+                  Text(product[getIndex].longDescription),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'CDF ${product[getIndex].price * product[getIndex].qty}',
+                          style: TextStyle(color: ColorPages.COLOR_VERT,fontWeight: FontWeight.bold,fontSize: 18)
+                      ),
                       Container(
-                          padding: EdgeInsets.all(10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Tomate Fresh",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 21),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "6000 FC",
-                                    style: TextStyle(
-                                      fontSize: 19,
-                                    ),
-                                  ),
-                                  Container(
-                                    child: Row(
-                                      children: [
-                                        IconButton(
-                                            onPressed: () {},
-                                            icon: Icon(
-                                              Icons.do_not_disturb_on,
-                                              size: 30,
-                                            )),
-                                        Text(
-                                          '1',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.red),
-                                        ),
-                                        IconButton(
-                                            onPressed: () {},
-                                            icon: Icon(Icons.add_circle,
-                                                size: 30)),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          )),
+                        child: Row(children: [
+                          IconButton(
+                            onPressed: () {
+                              ref
+                                  .read(proudctNotifierProvider.notifier)
+                                  .decreaseQty(product[getIndex].pid);
+                            },
+                            icon: const Icon(
+                              Icons.do_not_disturb_on_outlined,
+                              size: 30,
+                            ),
+                          ),
+                          Text(
+                            product[getIndex].qty.toString(),
+                              style: TextStyle(color: ColorPages.COLOR_ROUGE,fontWeight: FontWeight.bold)
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                ref
+                                    .read(proudctNotifierProvider.notifier)
+                                    .incrementQty(product[getIndex].pid);
+                              },
+                              icon: const Icon(
+                                Icons.add_circle_outline,
+                                size: 30,
+                              ))
+                        ]),
+                      ),
                     ],
                   ),
-                  Column(
-                    children: [
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "Détails: ",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text("1KG = 6000 FC"),
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text("1KG = 6000 FC"),
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text("1KG = 6000 FC"),
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text("1KG = 6000 FC"),
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text("1KG = 6000 FC"),
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text("1KG = 6000 FC"),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(15),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black12,
-                                        blurRadius: 6,
-                                        spreadRadius: 2)
-                                  ]),
-                              child: Icon(
-                                Icons.email,
-                                size: 30,
-                                color: Color(0XFF146ABE),
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(15),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black12,
-                                        blurRadius: 6,
-                                        spreadRadius: 2)
-                                  ]),
-                              child: Icon(
-                                Icons.phone,
-                                size: 30,
-                                color: Colors.green,
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(15),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black12,
-                                        blurRadius: 6,
-                                        spreadRadius: 2)
-                                  ]),
-                              child: Icon(
-                                Icons.whatshot,
-                                size: 30,
-                                color: Colors.green,
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  )
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: ColorPages.COLOR_NOIR,
+                        minimumSize: const Size(double.infinity, 50)),
+                    onPressed: () {},
+                    child: const Text('Ajouter au panier',style: TextStyle(color: ColorPages.COLOR_BLANC),),
+                  ),
                 ],
               ),
-            )),
+            ),
           ],
         ),
       ),
+
     );
   }
 }

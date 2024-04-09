@@ -25,7 +25,6 @@ class _CarouselPageState extends State<CarouselPage> {
         CarouselSlider(
           items: _imageList.map((imagePath) {
             return Container(
-              margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
               decoration: BoxDecoration(
                 color: Colors.grey,
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -41,7 +40,7 @@ class _CarouselPageState extends State<CarouselPage> {
             );
           }).toList(),
           options: CarouselOptions(
-            height: 200,
+            height: 150,
             enlargeCenterPage: true,
             autoPlay: true,
             autoPlayInterval: Duration(seconds: 3),

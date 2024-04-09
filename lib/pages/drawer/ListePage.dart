@@ -23,7 +23,7 @@ class _ListePageState extends State<ListePage> {
                   size: 20,
                   color: ColorPages.COLOR_VERT,
                 ),
-                Expanded(
+                Container(
                   child: ListTile(
                     title: Text('Visiter le site '),
                     onTap: () {},
@@ -41,7 +41,7 @@ class _ListePageState extends State<ListePage> {
                   size: 20,
                   color: ColorPages.COLOR_VERT,
                 ),
-                Expanded(
+                Container(
                   child: ListTile(
                     title: Text('Marchandises'),
                     onTap: () {},
@@ -59,7 +59,7 @@ class _ListePageState extends State<ListePage> {
                   size: 20,
                   color: ColorPages.COLOR_VERT,
                 ),
-                Expanded(
+                Container(
                   child: ListTile(
                     title: Text('Rapports'),
                     onTap: () {},
@@ -77,7 +77,7 @@ class _ListePageState extends State<ListePage> {
                   size: 20,
                   color: ColorPages.COLOR_VERT,
                 ),
-                Expanded(
+                Container(
                   child: ListTile(
                     title: Text('Dépenses'),
                     onTap: () {},
@@ -99,7 +99,7 @@ class _ListePageState extends State<ListePage> {
                   size: 20,
                   color: ColorPages.COLOR_VERT,
                 ),
-                Expanded(
+                Container(
                   child: ListTile(
                     title: Text('Fournisseurs'),
                     onTap: () {},
@@ -117,7 +117,7 @@ class _ListePageState extends State<ListePage> {
                   size: 20,
                   color: ColorPages.COLOR_VERT,
                 ),
-                Expanded(
+                Container(
                   child: ListTile(
                     title: Text('Clients'),
                     onTap: () {},

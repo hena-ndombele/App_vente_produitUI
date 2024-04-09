@@ -1,15 +1,44 @@
+import '../models/ProduitListe.dart';
+import '../models/ProduitModel.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+class ProductNotifier extends StateNotifier<List<ProduitModel>> {
+  ProductNotifier() : super(productItems);
 
-import 'package:riverpod/riverpod.dart';
-import 'package:zigida_app/pages/models/ProduitListe.dart';
-import 'package:zigida_app/pages/models/ProduitModel.dart';
+  // isSelect Change State
 
-class ProduitController extends StateNotifier<List<ProduitModel>>{
-  ProduitController(): super(produitItem);
+  void isSelectItem(int pid, int index) {
+    state = [
+      for (final product in state)
+        if (product.pid == pid)
+          product.copyWith(isSelected: !state[index].isSelected)
+        else
+          product,
+    ];
+  }
 
+  void incrementQty(int pid) {
+    state = [
+      for (final product in state)
+        if (product.pid == pid)
+          product.copyWith(qty: product.qty += 1)
+        else
+          product,
+    ];
+  }
 
+  void decreaseQty(int pid) {
+    state = [
+      for (final product in state)
+        if (product.pid == pid)
+          product.copyWith(qty: product.qty -= 1)
+        else
+          product,
+    ];
+  }
 }
 
-final produitNotifierProvider=StateNotifierProvider<ProduitController, List<ProduitModel>>((ref){
-  return ProduitController();
+final proudctNotifierProvider =
+StateNotifierProvider<ProductNotifier, List<ProduitModel>>((ref) {
+  return ProductNotifier();
 });
